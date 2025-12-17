@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ski Resort Country Guessing Game</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(#e0f3ff, #ffffff);
+        text-align: center;
+        padding: 40px;
+    }
+
+    .game-box {
+        background: white;
+        max-width: 460px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        color: #1a3d7c;
+    }
+
+    .resort-name {
+        font-size: 26px;
+        margin: 15px 0;
+        font-weight: bold;
+    }
+
+    input {
+        padding: 10px;
+        width: 85%;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #1a3d7c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    button:hover {
+        background-color: #264fa5;
+    }
+
+    .message {
+        margin-top: 15px;
+        font-weight: bold;
+        min-height: 24px;
+    }
+
+    .attempts {
+        margin-top: 8px;
+        color: #555;
+    }
+
+    .hint {
+        margin-top: 10px;
+        color: #2d6a9f;
+        font-style: italic;
+    }
+
+    a {
+        display: block;
+        margin-top: 25px;
+        text-decoration: none;
+        color: #1a3d7c;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="game-box">
+    <h1>🌍 Ski Resort Country Game</h1>
+    <p>Which country is this ski resort in?</p>
+
+    <div class="resort-name" id="resort"></div>
+
+    <input type="text" id="guess" placeholder="Type the country">
+    <br>
+
+    <button onclick="checkGuess()">Submit Guess</button>
+    <button onclick="giveHint()">Get Hint</button>
+    <button onclick="nextResort()">Next Resort</button>
+
+    <div class="message" id="message"></div>
+    <div class="hint" id="hint"></div>
+    <div class="attempts" id="attempts"></div>
+
+    <a href="skills.html">⬅ Back to Hobbies Page</a>
+</div>
+
+<script>
+    const resorts = [
+        { name: "Vail", country: "United States", continent: "North America" },
+        { name: "Park City", country: "United States", continent: "North America" },
+        { name: "Whistler", country: "Canada", continent: "North America" },
+        { name: "Chamonix", country: "France", continent: "Europe" },
+        { name: "Zermatt", country: "Switzerland", continent: "Europe" },
+        { name: "St. Anton", country: "Austria", continent: "Europe" },
+        { name: "Niseko", country: "Japan", continent: "Asia" }
+    ];
+
+    let selected;
+    let tries = 0;
+    let hintCount = 0;
+
+    function loadResort() {
+        selected = resorts[Math.floor(Math.random() * resorts.length)];
+        document.getElementById("resort").textContent = selected.name;
+        document.getElementById("message").textContent = "";
+        document.getElementById("hint").textContent = "";
+        document.getElementById("attempts").textContent = "";
+        document.getElementById("guess").value = "";
+        tries = 0;
+        hintCount = 0;
+    }
+
+    function checkGuess() {
+        const userGuess = document.getElementById("guess").value.trim().toLowerCase();
+        const message = document.getElementById("message");
+        tries++;
+
+        if (!userGuess) {
+            message.textContent = "❗ Please enter a country.";
+            return;
+        }
+
+        if (userGuess === selected.country.toLowerCase()) {
+            message.textContent = "🎉 Correct! Nice work.";
+        } else {
+            message.textContent = "❌ Not quite — try again.";
+        }
+
+        document.getElementById("attempts").textContent = `Attempts: ${tries}`;
+    }
+
+    function giveHint() {
+        const hint = document.getElementById("hint");
+        hintCount++;
+
+        if (hintCount === 1) {
+            hint.textContent = `Hint: The resort is in ${selected.continent}.`;
+        } else if (hintCount === 2) {
+            hint.textContent = `Hint: The country starts with "${selected.country.charAt(0)}".`;
+        } else {
+            hint.textContent = "No more hints available 😅";
+        }
+    }
+
+    function nextResort() {
+        loadResort();
+    }
+
+    loadResort();
+</script>
+
+</body>
+</html>

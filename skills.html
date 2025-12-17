@@ -1,0 +1,105 @@
+<!--Taylor Belot
+IS 201 Section 001
+12/7/25-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Belot - Brigham Young University</title>
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <link rel="stylesheet" href="../IS201final/css/custom.css">
+
+</head>
+<body>
+    <div id="top" class="box-1">
+        <h1>My Skills</h1>
+        <p>Learn about me and my hobbies or else!</p>
+        <a href="#section2">Watch a Cool Video!</a> <br>
+        <a href="ski-resort-game.html">Play: Ski Resort Country Game 🌍</a>
+        <!-- <a href="test-video.html"> Test video</a> -->
+
+    </div>
+
+
+    <div id="section1" class="box-2">
+        <h2>Soccer</h2>
+        <ol>
+            <li>Why I love it
+                <ul>
+                    <li>It's a fun way to keep active and gives me something to work for.</li>
+                    <li>I enjoy the teamwork and comraderie that come with working with others.</li>
+                    <li>It is challenging and there is always something new to learn.</li>
+                </ul>
+            </li>
+
+            <li>How I got started
+                <ul>
+                    <li>I started playing when I was young and quickly fell in love with the sport.</li>
+                    <li>Playing with friends and joining the local City League and club teams helped me improve and stay involved.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <img src="assets/img/Soccerhobby.jpg" alt="Soccer hobby image" width="800">
+    </div>
+
+
+
+    <div id="section2" class="box-3">
+    <h2>Skiing</h2>
+    <p>Here's a cool video about skiing!</p>
+
+    <!-- Embedded Skiing Video -->
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/CVJogXRggwg?si=vv-ai7MJRFT2ZYGk"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+
+
+    <div id="section2b" class="box-4">
+        <h2>Clash Royale</h2>
+        <ol>
+            <li>Why I love it
+                <ul>
+                    <li>Fast-paced strategy that keeps every match exciting.</li>
+                    <li>Collecting and upgrading cards makes the game feel rewarding over time.</li>
+                    <li>The competitive ladder and seasonal challenges keep it fresh.</li>
+                    <li>I can play with friends, join clans, and compete in wars together.</li>
+                </ul>
+            </li>
+
+            <li>How I got started
+                <ul>
+                    <li>I started playing in 2017 after hearing friends talk about it at school.</li>
+                    <li>At first it was just a casual game, but I quickly got hooked on building decks and pushing trophies.</li>
+                    <li>Over the years I’ve watched the game evolve with new cards, metas, and updates.</li>
+                </ul>
+            </li>
+        </ol>
+        <img src="assets/img/clashroyalepic.webp" alt="Hobby 3 image" width="800">
+    </div>
+
+    <div id="section3">
+            <h2>Tableau Visualization</h2>
+            <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+            <div class="tableau-container">
+                <tableau-viz id="skiViz"
+                    src="https://public.tableau.com/views/MavenSkiSlopes/Dashboard"
+                    width="1700" height="700">
+                </tableau-viz>
+        </div>
+    </div>
+
+
+<a href="index.html" class="floating-btn">Back to Home</a>
+
+</body>
+</html>

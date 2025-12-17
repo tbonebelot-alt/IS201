@@ -1,0 +1,105 @@
+/* 1. Custom background color */
+body {
+    background-color: #f4f8ff; /* light blue background */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+/* 2. Custom font example */
+h1, h2, h3 {
+    font-family: "Trebuchet MS", sans-serif;
+    color: #1a3d7c; /* dark blue */
+}
+
+/* 3. Styled div boxes (you need at least 3) */
+.box-1 {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.box-2 {
+    background: #6c717a;
+    padding: 20px;
+    border: 2px solid #1a3d7c;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.box-3 {
+    background: #dcedff;
+    padding: 20px;
+    border: 2px solid #1a3d7c;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+
+.box-4 {
+    background: #516d8a;
+    padding: 20px;
+    border: 2px solid #04082f;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* 4. Custom list styling */
+ul {
+    list-style-type: square;
+}
+
+ol ul {
+    list-style-type: circle; /* nested list style */
+}
+
+/* 5. Anchor link section styling */
+#top {
+    padding: 15px;
+    text-align: center;
+}
+
+.anchor-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1a3d7c;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.anchor-button:hover {
+    background: #264fa5;
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background-color: #1a3d7c;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 1000;
+}
+
+.floating-btn:hover {
+    background-color: #264fa5;
+}
+iframe {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
