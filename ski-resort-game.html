@@ -14,7 +14,7 @@
 
     .game-box {
         background: white;
-        max-width: 460px;
+        max-width: 480px;
         margin: auto;
         padding: 30px;
         border-radius: 14px;
@@ -23,6 +23,12 @@
 
     h1 {
         color: #1a3d7c;
+    }
+
+    .score {
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #264fa5;
     }
 
     .resort-name {
@@ -40,7 +46,7 @@
 
     button {
         margin-top: 10px;
-        padding: 10px 20px;
+        padding: 10px 18px;
         background-color: #1a3d7c;
         color: white;
         border: none;
@@ -70,6 +76,18 @@
         font-style: italic;
     }
 
+    .fun-fact {
+        margin-top: 12px;
+        color: #1a3d7c;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+
+    .fun-fact.show {
+        opacity: 1;
+    }
+
     a {
         display: block;
         margin-top: 25px;
@@ -83,6 +101,9 @@
 
 <div class="game-box">
     <h1>🌍 Ski Resort Country Game</h1>
+
+    <div class="score" id="score">Score: 0</div>
+
     <p>Which country is this ski resort in?</p>
 
     <div class="resort-name" id="resort"></div>
@@ -95,6 +116,7 @@
     <button onclick="nextResort()">Next Resort</button>
 
     <div class="message" id="message"></div>
+    <div class="fun-fact" id="funFact"></div>
     <div class="hint" id="hint"></div>
     <div class="attempts" id="attempts"></div>
 
@@ -103,18 +125,55 @@
 
 <script>
     const resorts = [
-        { name: "Vail", country: "United States", continent: "North America" },
-        { name: "Park City", country: "United States", continent: "North America" },
-        { name: "Whistler", country: "Canada", continent: "North America" },
-        { name: "Chamonix", country: "France", continent: "Europe" },
-        { name: "Zermatt", country: "Switzerland", continent: "Europe" },
-        { name: "St. Anton", country: "Austria", continent: "Europe" },
-        { name: "Niseko", country: "Japan", continent: "Asia" }
+        { 
+            name: "Vail", 
+            country: "United States", 
+            continent: "North America",
+            fact: "Vail is the largest ski resort in the United States by skiable area."
+        },
+        { 
+            name: "Park City", 
+            country: "United States", 
+            continent: "North America",
+            fact: "Park City is the largest ski resort in the U.S. when combining its two connected mountains."
+        },
+        { 
+            name: "Whistler", 
+            country: "Canada", 
+            continent: "North America",
+            fact: "Whistler hosted events during the 2010 Winter Olympics."
+        },
+        { 
+            name: "Chamonix", 
+            country: "France", 
+            continent: "Europe",
+            fact: "Chamonix is considered the birthplace of modern mountaineering."
+        },
+        { 
+            name: "Zermatt", 
+            country: "Switzerland", 
+            continent: "Europe",
+            fact: "Zermatt offers year-round skiing on the Matterhorn Glacier."
+        },
+        { 
+            name: "St. Anton", 
+            country: "Austria", 
+            continent: "Europe",
+            fact: "St. Anton is known as the cradle of alpine skiing."
+        },
+        { 
+            name: "Niseko", 
+            country: "Japan", 
+            continent: "Asia",
+            fact: "Niseko is famous for its deep powder snow caused by cold Siberian winds."
+        }
     ];
 
     let selected;
     let tries = 0;
     let hintCount = 0;
+    let score = 0;
+    let solved = false;
 
     function loadResort() {
         selected = resorts[Math.floor(Math.random() * resorts.length)];
@@ -123,22 +182,36 @@
         document.getElementById("hint").textContent = "";
         document.getElementById("attempts").textContent = "";
         document.getElementById("guess").value = "";
+        document.getElementById("funFact").textContent = "";
+        document.getElementById("funFact").classList.remove("show");
+
         tries = 0;
         hintCount = 0;
+        solved = false;
     }
 
     function checkGuess() {
+        if (solved) return;
+
         const userGuess = document.getElementById("guess").value.trim().toLowerCase();
         const message = document.getElementById("message");
-        tries++;
+        const funFact = document.getElementById("funFact");
 
         if (!userGuess) {
             message.textContent = "❗ Please enter a country.";
             return;
         }
 
+        tries++;
+
         if (userGuess === selected.country.toLowerCase()) {
             message.textContent = "🎉 Correct! Nice work.";
+            funFact.textContent = `Fun fact: ${selected.fact}`;
+            funFact.classList.add("show");
+
+            score++;
+            document.getElementById("score").textContent = `Score: ${score}`;
+            solved = true;
         } else {
             message.textContent = "❌ Not quite — try again.";
         }
@@ -147,6 +220,8 @@
     }
 
     function giveHint() {
+        if (solved) return;
+
         const hint = document.getElementById("hint");
         hintCount++;
 
